@@ -664,7 +664,7 @@ header("content-disposition: attachment; filename=tumblr_$username.xml");
 FIGURE;
             }
       ?>
-    <title><?php echo htmlspecialchars(formatEntryTitle(&$post_content)) ?></title>
+    <title><?php echo htmlspecialchars(formatEntryTitle($post_content)) ?></title>
     <description></description>
     <content:encoded><![CDATA[<?php echo $image; ?>
     <?php echo formatForWP($post_content) ?>]]></content:encoded>
@@ -684,7 +684,7 @@ FIGURE;
                 $quote_text = "<blockquote>" . $post->{'quote-text'} . "</blockquote>";
             }
     ?>
-    <title><?php echo htmlspecialchars(formatEntryTitle(&$post_content)) ?></title>
+    <title><?php echo htmlspecialchars(formatEntryTitle($post_content)) ?></title>
     <description></description>
     <content:encoded><![CDATA[<?php echo $quote_text ?>
 
@@ -721,7 +721,7 @@ FIGURE;
       case "video":
       $post_content = $post->{'video-caption'};
     ?>
-    <title><?php echo htmlspecialchars(formatEntryTitle(&$post_content)) ?></title>
+    <title><?php echo htmlspecialchars(formatEntryTitle($post_content)) ?></title>
     <description></description>
     <content:encoded><![CDATA[
         <?php if($type == 'wordpress.com' && strpos($post->{'video-source'}, 'youtube.com') !== false) { ?>
@@ -742,7 +742,7 @@ FIGURE;
       $audio_file = preg_match('/audio_file=([\S\s]*?)(&|")/', $post->{'audio-player'}, $matches);
             checkMediaForWarnings($matches[1], $post->attributes()->url, "audio");
     ?>
-    <title><?php echo htmlspecialchars(formatEntryTitle(&$post_content)) ?></title>
+    <title><?php echo htmlspecialchars(formatEntryTitle($post_content)) ?></title>
     <description></description>
     <content:encoded><![CDATA[<audio controls src="<?php echo $matches[1] ?>"><a href="<?php echo $matches[1]; ?>">Audio</a></audio>
 
